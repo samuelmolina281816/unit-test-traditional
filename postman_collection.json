@@ -1,0 +1,52 @@
+{
+  "info": {
+    "_postman_id": "ba835ff9-b254-4a82-bf65-bf24ea862a07",
+    "name": "ms-transfer-control",
+    "description": "Solicitudes para registrar transferencias y consultar el disponible diario por cuenta.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8085"
+    },
+    {
+      "key": "sourceAccount",
+      "value": "00123456789"
+    }
+  ],
+  "item": [
+    {
+      "name": "Registrar transferencia",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": \"customer-1\",\n  \"sourceAccount\": \"{{sourceAccount}}\",\n  \"targetAccount\": \"00987654321\",\n  \"amount\": 100.00\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": "{{baseUrl}}/api/transfers/control"
+      },
+      "response": []
+    },
+    {
+      "name": "Consultar disponible diario",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/transfers/control/{{sourceAccount}}/daily-available"
+      },
+      "response": []
+    }
+  ]
+}
